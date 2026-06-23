@@ -53,7 +53,7 @@ export default function Skills() {
             <motion.div
               key={category.name}
               variants={cardVariants}
-              className={`group relative glass-subtle rounded-2xl p-6 hover:bg-white/[0.06] transition-all duration-400 overflow-hidden ${category.gridClass}`}
+              className={`group relative spotlight-card glass-subtle rounded-2xl p-6 hover:bg-white/[0.06] transition-all duration-400 overflow-hidden ${category.gridClass}`}
             >
               {/* Top accent line */}
               <div

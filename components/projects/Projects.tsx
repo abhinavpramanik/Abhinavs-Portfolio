@@ -27,6 +27,12 @@ function ProjectCard({
       rotateY.set(px * 8);
       x.set(px * 4);
       y.set(py * 4);
+
+      // Spotlight effect
+      const spotlightX = ((e.clientX - rect.left) / rect.width) * 100;
+      const spotlightY = ((e.clientY - rect.top) / rect.height) * 100;
+      e.currentTarget.style.setProperty("--spotlight-x", `${spotlightX}%`);
+      e.currentTarget.style.setProperty("--spotlight-y", `${spotlightY}%`);
     },
     [rotateX, rotateY, x, y]
   );
@@ -52,7 +58,7 @@ function ProjectCard({
         transformStyle: "preserve-3d",
         perspective: "1000px",
       }}
-      className={`group relative glass-subtle rounded-2xl overflow-hidden hover:border-[var(--color-primary)]/30 transition-colors duration-300 ${
+      className={`group relative spotlight-card glass-subtle rounded-2xl overflow-hidden hover:border-[var(--color-primary)]/30 transition-colors duration-300 ${
         project.isFeatured ? "md:col-span-2" : ""
       }`}
     >

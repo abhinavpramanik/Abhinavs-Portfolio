@@ -15,16 +15,6 @@ const timelineEvents = [
     tags: ["React", "Node.js", "MongoDB"],
   },
   {
-    title: "Project Development",
-    subtitle: "Building Production Applications",
-    description:
-      "Developed multiple full-stack applications, honing skills in system design, API architecture, and frontend development.",
-    date: "2024",
-    icon: "🛠️",
-    color: "#6366F1",
-    tags: ["Next.js", "TypeScript", "AWS"],
-  },
-  {
     title: "Hackathon Victories",
     subtitle: "SIH Winner & Odoo Runner-Up",
     description:
