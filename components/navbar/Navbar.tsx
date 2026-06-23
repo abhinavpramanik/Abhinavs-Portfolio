@@ -70,14 +70,14 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          "fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[95%] max-w-[1200px] rounded-full",
           isScrolled
-            ? "glass border-b border-white/[0.06] shadow-lg shadow-black/20"
-            : "bg-transparent"
+            ? "glass-pill border border-white/[0.08] shadow-xl shadow-black/40"
+            : "bg-transparent border border-transparent"
         )}
       >
-        <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-          <div className="flex items-center justify-between h-16 md:h-[72px]">
+        <div className="px-4 md:px-8">
+          <div className="flex items-center justify-between h-14 md:h-16">
             {/* Logo */}
             <button
               onClick={() => handleNavClick("#home")}
@@ -96,7 +96,7 @@ export default function Navbar() {
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
                   className={cn(
-                    "relative px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200",
+                    "relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300",
                     activeSection === link.href.replace("#", "")
                       ? "text-white"
                       : "text-[var(--color-text-secondary)] hover:text-white"
@@ -106,7 +106,7 @@ export default function Navbar() {
                   {activeSection === link.href.replace("#", "") && (
                     <motion.span
                       layoutId="activeNav"
-                      className="absolute inset-0 bg-white/[0.06] rounded-lg -z-10"
+                      className="absolute inset-0 bg-white/[0.08] shadow-[0_0_20px_rgba(255,255,255,0.15),inset_0_1px_2px_rgba(255,255,255,0.25)] rounded-full backdrop-blur-lg border border-white/[0.15] -z-10"
                       transition={{
                         type: "spring",
                         stiffness: 400,
@@ -123,7 +123,7 @@ export default function Navbar() {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:inline-flex items-center gap-2 px-5 py-2 text-sm font-semibold rounded-xl gradient-bg text-white hover:shadow-lg hover:shadow-[var(--color-primary)]/20 transition-all duration-300 hover:-translate-y-0.5"
+              className="hidden md:inline-flex items-center gap-2 px-5 py-2 text-sm font-semibold rounded-full gradient-bg text-white hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] transition-all duration-300 hover:-translate-y-0.5"
             >
               Resume
             </a>

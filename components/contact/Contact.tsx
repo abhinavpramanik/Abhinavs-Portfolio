@@ -11,9 +11,9 @@ import { contactSchema, type ContactFormData } from "@/lib/schemas";
 
 const socialLinks = [
   { label: "GitHub", href: "https://github.com/abhinavpramanik", icon: FaGithub },
-  { label: "LinkedIn", href: "https://linkedin.com/in/abhinavpramanik", icon: FaLinkedinIn },
-  { label: "Twitter", href: "https://twitter.com/abhinavpramanik", icon: FaXTwitter },
-  { label: "Email", href: "mailto:abhinavpramanik@email.com", icon: Mail },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/abhinav-pramanik/", icon: FaLinkedinIn },
+  { label: "Twitter", href: "https://twitter.com/AbhinavPramanik", icon: FaXTwitter },
+  { label: "Email", href: "mailto:abhinavpramanik@gmail.com", icon: Mail },
 ];
 
 export default function Contact() {
