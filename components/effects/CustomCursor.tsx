@@ -18,7 +18,7 @@ export default function CustomCursor() {
     const hasHover = window.matchMedia("(hover: hover)").matches;
     if (!hasHover) return;
 
-    setIsVisible(true);
+    setTimeout(() => setIsVisible(true), 0);
 
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);

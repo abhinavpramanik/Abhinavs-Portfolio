@@ -71,6 +71,7 @@ function ProjectCard({
       {/* Preview Area */}
       <div className="relative h-48 md:h-56 bg-gradient-to-br from-[var(--color-bg-secondary)] to-[var(--color-bg-primary)] flex items-center justify-center overflow-hidden">
         {project.image ? (
+          /* eslint-disable-next-line @next/next/no-img-element */
           <img
             src={project.image}
             alt={project.title}
@@ -178,7 +179,7 @@ export default function Projects() {
 
   useEffect(() => {
     if (!emblaApi) return;
-    onSelect();
+    setTimeout(onSelect, 0);
     emblaApi.on("select", onSelect);
     emblaApi.on("reInit", onSelect);
   }, [emblaApi, onSelect]);

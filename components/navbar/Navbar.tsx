@@ -156,26 +156,26 @@ export default function Navbar() {
 
             {/* Panel */}
             <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
+              initial={{ opacity: 0, scale: 0.95, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -20 }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="absolute right-0 top-0 bottom-0 w-[280px] bg-[var(--color-bg-secondary)]/95 backdrop-blur-xl border-l border-white/[0.06]"
+              className="absolute right-4 top-20 w-[260px] bg-[var(--color-bg-secondary)]/50 backdrop-blur-3xl border border-white/[0.08] shadow-2xl shadow-black/50 rounded-[2.5rem] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex flex-col h-full pt-20 px-6 pb-8">
+              <div className="flex flex-col pt-6 px-4 pb-6">
                 <div className="flex flex-col gap-1">
                   {navLinks.map((link, i) => (
                     <motion.button
                       key={link.href}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 + i * 0.05 }}
+                      transition={{ delay: 0.05 + i * 0.05 }}
                       onClick={() => handleNavClick(link.href)}
                       className={cn(
-                        "text-left px-4 py-3 rounded-xl text-[15px] font-medium transition-all duration-200",
+                        "text-center px-4 py-3 rounded-full text-[15px] font-medium transition-all duration-200",
                         activeSection === link.href.replace("#", "")
-                          ? "text-white bg-white/[0.06]"
+                          ? "text-white bg-white/[0.08] shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
                           : "text-[var(--color-text-secondary)] hover:text-white hover:bg-white/[0.03]"
                       )}
                     >
@@ -185,12 +185,12 @@ export default function Navbar() {
                 </div>
 
                 {/* Mobile Resume Button */}
-                <div className="mt-auto">
+                <div className="mt-4 pt-4 border-t border-white/[0.06]">
                   <a
                     href="/resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full px-5 py-3 text-sm font-semibold rounded-xl gradient-bg text-white"
+                    className="flex items-center justify-center gap-2 w-full px-5 py-3.5 text-sm font-semibold rounded-full gradient-bg text-white shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] transition-shadow"
                   >
                     Download Resume
                   </a>
