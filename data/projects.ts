@@ -172,7 +172,7 @@ export const projects: Project[] = [
 
   {
     id: "portfolio",
-    title: "Developer Portfolio",
+    title: "Personal Portfolio",
     image: "/portfolio-img.png",
 
     description:
