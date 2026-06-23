@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Abhinav Pramanik — Developer Portfolio
 
-## Getting Started
+A highly interactive and immersive developer portfolio showcasing projects, achievements, skills, and technical expertise. Built with modern web technologies, focusing on performance, fluid animations, and a premium "liquid glass" dark-themed aesthetic.
 
-First, run the development server:
+> **🚀 Live Deployment:** [Insert Deployment Link Here] (e.g., https://your-portfolio.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ Key Features
+
+- **Immersive Animations:** Advanced scroll-linked animations, magnetic elements, and spring physics powered by Framer Motion and GSAP.
+- **3D Interactive Hero:** Floating, tilt-responsive 3D elements built with React Three Fiber and Three.js.
+- **Premium Aesthetics:** Ocean/Deep Sea color palette with custom frosted "liquid glass" components, spotlight hover effects, and animated gradient borders.
+- **Smooth Scrolling:** Buttery smooth scrolling experience integrated natively via Lenis.
+- **Dynamic Projects Showcase:** Touch-friendly swipeable project carousel built with Embla Carousel.
+- **Performant & SEO Optimized:** Dynamically imported components, suspense boundaries, OpenGraph metadata, and structured JSON-LD for excellent Lighthouse scores.
+- **Working Contact Form:** Integrated with the Resend API for real-time email delivery with Zod validation.
+- **Fully Responsive:** Beautifully adapts to mobile, tablet, and desktop screens with custom touch optimizations.
+
+## 🛠 Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Library:** React 19
+- **Styling:** Tailwind CSS v4 (with custom inline theme tokens)
+- **Animations:** Framer Motion, GSAP, React Spring
+- **3D Rendering:** Three.js, React Three Fiber, React Three Drei
+- **Carousel:** Embla Carousel React
+- **Icons:** Lucide React, React Icons
+- **Forms & Validation:** React Hook Form, Zod
+- **Email API:** Resend
+
+---
+
+## 🚀 Getting Started
+
+Follow these instructions to run the portfolio locally on your machine.
+
+### Prerequisites
+
+Make sure you have [Node.js](https://nodejs.org/) (v18+) and npm installed.
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/abhinavpramanik/Abhinavs-Portfolio.git
+   cd Abhinavs-Portfolio
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   Create a `.env` file in the root of the project and add your Resend API key for the contact form to work:
+   ```env
+   RESEND_API_KEY=your_resend_api_key_here
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to see the portfolio live!
+
+---
+
+## 🎨 Customization
+
+The core design system is heavily centralized in `app/globals.css`. 
+To change the site-wide theme, modify the CSS custom properties inside the `@theme inline` block:
+
+```css
+@theme inline {
+  --color-bg-primary: #020617; /* Deep Slate */
+  --color-primary: #3B82F6;    /* Sapphire Blue */
+  --color-secondary: #06B6D4;  /* Cyan */
+  --color-accent: #2DD4BF;     /* Teal */
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+All data (projects, skills, achievements) is neatly separated from the UI components. Simply edit the files inside the `data/` directory to update the content.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📄 License
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is open-source and available under the [MIT License](LICENSE).
