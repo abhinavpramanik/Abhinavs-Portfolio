@@ -1,10 +1,11 @@
 "use client";
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
 import { projects } from "@/data/projects";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 
 function ProjectCard({
   project,
@@ -58,9 +59,7 @@ function ProjectCard({
         transformStyle: "preserve-3d",
         perspective: "1000px",
       }}
-      className={`group relative spotlight-card glass-subtle rounded-2xl overflow-hidden hover:border-[var(--color-primary)]/30 transition-colors duration-300 ${
-        project.isFeatured ? "md:col-span-2" : ""
-      }`}
+      className={`group relative spotlight-card glass-subtle rounded-2xl overflow-hidden hover:border-[var(--color-primary)]/30 transition-colors duration-300 h-full flex flex-col`}
     >
       {/* Badge */}
       {project.badge && (
@@ -71,20 +70,28 @@ function ProjectCard({
 
       {/* Preview Area */}
       <div className="relative h-48 md:h-56 bg-gradient-to-br from-[var(--color-bg-secondary)] to-[var(--color-bg-primary)] flex items-center justify-center overflow-hidden">
-        <div className="text-center">
-          <span className="text-4xl mb-2 block">
-            {project.id === "easyerp"
-              ? "🏢"
-              : project.id === "jobscout"
-              ? "🔍"
-              : "🤖"}
-          </span>
-          <span className="text-sm font-semibold text-[var(--color-text-secondary)]">
-            {project.title}
-          </span>
-        </div>
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div className="text-center transition-transform duration-500 group-hover:scale-105">
+            <span className="text-4xl mb-2 block">
+              {project.id === "easyerp"
+                ? "🏢"
+                : project.id === "jobscout"
+                ? "🔍"
+                : "🤖"}
+            </span>
+            <span className="text-sm font-semibold text-[var(--color-text-secondary)]">
+              {project.title}
+            </span>
+          </div>
+        )}
         {/* Hover overlay */}
-        <div className="absolute inset-0 bg-[var(--color-primary)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-[var(--color-primary)]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay" />
       </div>
 
       {/* Content */}
@@ -123,7 +130,7 @@ function ProjectCard({
         </div>
 
         {/* Links */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 mt-auto pt-2">
           {project.githubUrl && (
             <a
               href={project.githubUrl}
@@ -156,6 +163,26 @@ function ProjectCard({
 }
 
 export default function Projects() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: false });
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+  }, [emblaApi, onSelect]);
+
   return (
     <section id="projects" className="relative">
       <div className="section-container">
@@ -165,22 +192,51 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16 md:mb-20"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 md:mb-20"
         >
-          <h2 className="section-title gradient-text mb-4">
-            Featured Projects
-          </h2>
-          <p className="section-subtitle mx-auto">
-            Handpicked work I&apos;m proud of — from hackathon-winning systems
-            to AI-powered applications.
-          </p>
+          <div className="text-left">
+            <h2 className="section-title gradient-text mb-4">
+              Featured Projects
+            </h2>
+            <p className="section-subtitle max-w-xl">
+              Handpicked work I&apos;m proud of — from hackathon-winning systems
+              to AI-powered applications.
+            </p>
+          </div>
+
+          {/* Carousel Controls */}
+          <div className="flex items-center gap-3 self-start md:self-auto">
+            <button
+              onClick={scrollPrev}
+              disabled={!canScrollPrev}
+              className="p-3 rounded-full glass-subtle text-[var(--color-text-secondary)] hover:text-white hover:border-[var(--color-primary)]/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+              aria-label="Previous slide"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={scrollNext}
+              disabled={!canScrollNext}
+              className="p-3 rounded-full glass-subtle text-[var(--color-text-secondary)] hover:text-white hover:border-[var(--color-primary)]/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+              aria-label="Next slide"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i} />
-          ))}
+        {/* Embla Carousel Viewport */}
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex gap-6 cursor-grab active:cursor-grabbing">
+            {projects.map((project, i) => (
+              <div
+                key={project.id}
+                className="flex-[0_0_100%] md:flex-[0_0_calc(50%-12px)] min-w-0"
+              >
+                <ProjectCard project={project} index={i} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
