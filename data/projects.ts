@@ -207,6 +207,6 @@ export const projects: Project[] = [
     ],
 
     githubUrl: "https://github.com/abhinavpramanik/Abhinavs-Portfolio",
-    // liveUrl: "#",
+    liveUrl: "https://abhinavpramanik.vercel.app/",
   },
 ];

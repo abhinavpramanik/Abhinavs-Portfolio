@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, ExternalLink } from "lucide-react";
+import { ArrowDown, ExternalLink, Mail, FileText } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
-import { Mail } from "lucide-react";
 import FloatingBackground from "./FloatingBackground";
 
 const containerVariants = {
@@ -106,6 +105,18 @@ export default function Hero() {
               <Mail
                 size={16}
                 className="transition-transform group-hover:translate-x-0.5"
+              />
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group md:hidden inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-xl border border-[var(--color-primary)]/30 glass-subtle text-white font-semibold text-sm hover:bg-[var(--color-primary)]/10 transition-all duration-300 hover:-translate-y-0.5"
+            >
+              View Resume
+              <FileText
+                size={16}
+                className="transition-transform group-hover:scale-110"
               />
             </a>
           </motion.div>
