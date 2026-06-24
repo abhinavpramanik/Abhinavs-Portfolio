@@ -2,7 +2,7 @@
 
 A highly interactive and immersive developer portfolio showcasing projects, achievements, skills, and technical expertise. Built with modern web technologies, focusing on performance, fluid animations, and a premium "liquid glass" dark-themed aesthetic.
 
-> **🚀 Live Deployment:** [Insert Deployment Link Here] (e.g., https://your-portfolio.vercel.app)
+> **🚀 Live Deployment:** [abhinavpramanik.vercel.app](https://abhinavpramanik.vercel.app/)
 
 ---
 
