@@ -27,7 +27,7 @@ A highly interactive and immersive developer portfolio showcasing projects, achi
 - **Carousel:** Embla Carousel React
 - **Icons:** Lucide React, React Icons
 - **Forms & Validation:** React Hook Form, Zod
-- **Email API:** Resend
+- **Email API:** Resend API
 
 ---
 
