@@ -34,7 +34,13 @@ export default function Contact() {
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) throw new Error("Failed to send message");
+      if (!response.ok) {
+        if (response.status === 429) {
+          toast.warning("Daily email limit reached (2/day). Please try again tomorrow!");
+          return;
+        }
+        throw new Error("Failed to send message");
+      }
 
       toast.success("Message sent! I'll get back to you soon. 🚀");
       reset();

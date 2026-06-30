@@ -89,7 +89,7 @@ export const projects: Project[] = [
     ],
 
     githubUrl: "https://github.com/CSEAnuragChandra/OxPH-CafePOS",
-    // liveUrl: "#",
+    liveUrl: "https://odoocafe-pos.onrender.com/",
   },
 
   {
